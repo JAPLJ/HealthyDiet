@@ -1,5 +1,7 @@
 package com.japlj.healthydiet.food;
 
+import com.japlj.healthydiet.ModConfig;
+
 public class FoodParameter {
 	public float proteinValue;
 	public float carbohydrateValue;
@@ -14,7 +16,7 @@ public class FoodParameter {
 	}
 	
 	private float addValue(float v1, float v2) {
-		return Math.min(100.0F, v1 + v2);
+		return Math.min(ModConfig.MAX_NUTRITION_VALUE, v1 + v2);
 	}
 	
 	public void add(FoodParameter param) {
