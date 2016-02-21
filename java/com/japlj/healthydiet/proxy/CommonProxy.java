@@ -1,5 +1,6 @@
 package com.japlj.healthydiet.proxy;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -14,5 +15,9 @@ public class CommonProxy {
 	
 	public void postInit(FMLPostInitializationEvent e) {
 		
+	}
+	
+	public EntityPlayer getEntityPlayerInstance() {
+		return null;
 	}
 }

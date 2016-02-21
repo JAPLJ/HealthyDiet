@@ -2,6 +2,8 @@ package com.japlj.healthydiet.proxy;
 
 import com.japlj.healthydiet.hud.FoodRenderHandler;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,5 +24,10 @@ public class ClientProxy extends CommonProxy {
 		super.postInit(e);
 		
 		FoodRenderHandler.init();
+	}
+	
+	@Override
+	public EntityPlayer getEntityPlayerInstance() {
+		return Minecraft.getMinecraft().thePlayer;
 	}
 }
