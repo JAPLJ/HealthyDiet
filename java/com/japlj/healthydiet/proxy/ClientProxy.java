@@ -24,6 +24,12 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent e) {
 		super.postInit(e);
 		
+		/* AppleCore による既存満腹度の HUD を無効化 */
+		squeek.applecore.ModConfig.SHOW_FOOD_VALUES_IN_TOOLTIP = false;
+		squeek.applecore.ModConfig.SHOW_SATURATION_OVERLAY = false;
+		squeek.applecore.ModConfig.SHOW_FOOD_VALUES_OVERLAY = false;
+		
+		/* クライアント側ハンドラの初期化・登録 */
 		FoodRenderHandler.init();
 	}
 	
