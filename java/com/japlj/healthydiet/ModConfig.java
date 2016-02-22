@@ -6,4 +6,7 @@ public class ModConfig {
 
 	/* リスポーン時にプレイヤーの栄養素や満腹度を初期状態にリセットするか */
 	public static boolean RESET_NUTRITIONAL_CONDITIONS_RESPAWN = true;
+	
+	/* デバッグ情報を画面に表示するか */
+	public static boolean SHOW_DEBUG_INFO = true;
 }
