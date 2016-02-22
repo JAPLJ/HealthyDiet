@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
+/* プレイヤーの栄養素と満腹度を管理するカスタムデータ */
 public class PlayerNutritionalConditions implements IExtendedEntityProperties {
 	public final static String EXT_PROP_NAME = "playerNutritionalConditions";
 	
@@ -55,6 +56,7 @@ public class PlayerNutritionalConditions implements IExtendedEntityProperties {
 		return param;
 	}
 	
+	/* プレイヤーが foodParam の栄養と満腹度を持つ食料を食べられるか */
 	public boolean isEdible(FoodParameter foodParam) {
 		return param.saturation + foodParam.saturation <= ModConfig.MAX_NUTRITION_VALUE;
 	}

@@ -2,6 +2,7 @@ package com.japlj.healthydiet.food;
 
 import com.japlj.healthydiet.ModConfig;
 
+/* 食料の持つパラメタ (3種の栄養素と満腹度) */
 public class FoodParameter {
 	public float proteinValue;
 	public float carbohydrateValue;

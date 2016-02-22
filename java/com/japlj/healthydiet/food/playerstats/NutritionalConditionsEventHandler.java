@@ -1,5 +1,6 @@
 package com.japlj.healthydiet.food.playerstats;
 
+import com.japlj.healthydiet.ModConfig;
 import com.japlj.healthydiet.network.MessagePlayerJoinInAnnouncement;
 import com.japlj.healthydiet.network.MessagePlayerNutritionalConditions;
 import com.japlj.healthydiet.network.PacketHandler;
@@ -32,12 +33,18 @@ public class NutritionalConditionsEventHandler {
 	@SubscribeEvent
 	public void onClonePlayer(net.minecraftforge.event.entity.player.PlayerEvent.Clone event) {
 		if (event.wasDeath) {
-			IExtendedEntityProperties oldprop = event.original.getExtendedProperties(PlayerNutritionalConditions.EXT_PROP_NAME);
-			IExtendedEntityProperties newprop = event.entityPlayer.getExtendedProperties(PlayerNutritionalConditions.EXT_PROP_NAME);
-			
-			NBTTagCompound data = new NBTTagCompound();
-			oldprop.saveNBTData(data);
-			newprop.loadNBTData(data);
+			/* 
+			 * プレイヤー死亡時の処理 
+			 * 栄養素と満腹度を保持するかリセットするかは設定で変更
+			 */
+			if (ModConfig.RESET_NUTRITIONAL_CONDITIONS_RESPAWN) {
+				IExtendedEntityProperties oldprop = event.original.getExtendedProperties(PlayerNutritionalConditions.EXT_PROP_NAME);
+				IExtendedEntityProperties newprop = event.entityPlayer.getExtendedProperties(PlayerNutritionalConditions.EXT_PROP_NAME);
+				
+				NBTTagCompound data = new NBTTagCompound();
+				oldprop.saveNBTData(data);
+				newprop.loadNBTData(data);
+			}
 		}
 	}
 	
