@@ -1,5 +1,6 @@
 package com.japlj.healthydiet.api;
 
+import com.japlj.healthydiet.food.FoodParameter;
 import com.japlj.healthydiet.food.FoodParameterManager;
 
 import net.minecraft.item.ItemFood;
@@ -21,5 +22,15 @@ public final class NutritionUtils {
 		}
 		
 		return FoodParameterManager.hasNutritionalInfo(items);
+	}
+	
+	/*
+	 * アイテム item に設定された栄養素情報を取得
+	 */
+	public FoodParameter getNutritionalValues(ItemStack items) {
+		if (items.getItem() instanceof ItemNutriousFood) {
+			return ((ItemNutriousFood)items.getItem()).getNutritionalValues();
+		}
+		return FoodParameterManager.getNutritionalValues(items);
 	}
 }
