@@ -1,5 +1,6 @@
 package com.japlj.healthydiet.proxy;
 
+import com.japlj.healthydiet.food.FoodEventHandler;
 import com.japlj.healthydiet.hud.FoodRenderHandler;
 
 import net.minecraft.client.Minecraft;
@@ -28,9 +29,11 @@ public class ClientProxy extends CommonProxy {
 		squeek.applecore.ModConfig.SHOW_FOOD_VALUES_IN_TOOLTIP = false;
 		squeek.applecore.ModConfig.SHOW_SATURATION_OVERLAY = false;
 		squeek.applecore.ModConfig.SHOW_FOOD_VALUES_OVERLAY = false;
+		squeek.applecore.ModConfig.SHOW_FOOD_EXHAUSTION_UNDERLAY = false;
 		
 		/* クライアント側ハンドラの初期化・登録 */
 		FoodRenderHandler.init();
+		FoodEventHandler.init();
 	}
 	
 	@Override

@@ -55,7 +55,9 @@ public final class VanillaFoods {
 		add(Items.mushroom_stew, 0.0F, 6.0F, 20.0F, 8.0F);
 		add(Items.rabbit_stew, 19.5F, 14.0F, 17.0F, 15.0F);
 		add(Items.pumpkin_pie, 17.0F, 4.0F, 12.0F, 10.0F);
-		add(Items.cake, 5.0F, 2.0F, 0.0F, 2.0F);
+
+		// TODO: ケーキの取り扱い
+		// add(Items.cake, 5.0F, 2.0F, 0.0F, 2.0F);
 		
 		// 他
 		add(new ItemStack(Items.golden_apple, 1, 0), 0.0F, 0.0F, 45.0F, 4.5F);

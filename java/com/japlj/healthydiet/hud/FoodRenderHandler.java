@@ -48,6 +48,9 @@ public class FoodRenderHandler {
 		if (ModConfig.SHOW_DEBUG_INFO) {
 			drawDebugInfo(mc, player, scale, stats);
 		}
+		
+		/* 既存の満腹度表示はキャンセル */
+		event.setCanceled(true);
 	}
 	
 	private void drawDebugInfo(Minecraft mc, EntityPlayer player, ScaledResolution scale, FoodParameter stats) {

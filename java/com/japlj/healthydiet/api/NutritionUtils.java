@@ -12,7 +12,7 @@ public final class NutritionUtils {
 	/*
 	 * アイテム item に栄養素情報が設定されているか
 	 */
-	public boolean hasNutritionalInfo(ItemStack items) {
+	public static boolean hasNutritionalInfo(ItemStack items) {
 		if (!(items.getItem() instanceof ItemFood)) {
 			return false;
 		}
@@ -27,7 +27,7 @@ public final class NutritionUtils {
 	/*
 	 * アイテム item に設定された栄養素情報を取得
 	 */
-	public FoodParameter getNutritionalValues(ItemStack items) {
+	public static FoodParameter getNutritionalValues(ItemStack items) {
 		if (items.getItem() instanceof ItemNutriousFood) {
 			return ((ItemNutriousFood)items.getItem()).getNutritionalValues();
 		}

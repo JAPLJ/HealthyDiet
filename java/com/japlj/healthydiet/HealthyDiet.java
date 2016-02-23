@@ -1,5 +1,7 @@
 package com.japlj.healthydiet;
 
+import org.apache.logging.log4j.Logger;
+
 import com.japlj.healthydiet.proxy.CommonProxy;
 
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +21,8 @@ public class HealthyDiet {
 	@SidedProxy(clientSide="com.japlj.healthydiet.proxy.ClientProxy", 
 				serverSide="com.japlj.healthydiet.proxy.ServerProxy")
 	public static CommonProxy proxy;
+	
+	public static Logger logger;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {

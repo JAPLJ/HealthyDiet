@@ -2,6 +2,7 @@ package com.japlj.healthydiet.food;
 
 import java.util.HashMap;
 
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
 /* 
@@ -9,7 +10,35 @@ import net.minecraft.item.ItemStack;
  * 追加で付与された栄養素情報を管理
  */
 public final class FoodParameterManager {
-	private static HashMap<ItemStack, FoodParameter> foodParams = new HashMap<ItemStack, FoodParameter>();
+	private static class ItemFoodKey {
+		public final ItemFood food;
+		public final int damage;
+		
+		public ItemFoodKey(ItemFood food, int damage) {
+			this.food = food;
+			this.damage = damage;
+		}
+		
+		public static ItemFoodKey fromItemStack(ItemStack items) {
+			return new ItemFoodKey((ItemFood)items.getItem(), items.getMetadata());
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (!(obj instanceof ItemFoodKey)) {
+				return false;
+			}
+			ItemFoodKey key = (ItemFoodKey)obj;
+			return food.equals(key.food) && damage == key.damage;
+		}
+		
+		@Override
+		public int hashCode() {
+			return food.hashCode() ^ damage;
+		}
+	}
+	
+	private static HashMap<ItemFoodKey, FoodParameter> foodParams = new HashMap<ItemFoodKey, FoodParameter>();
 	
 	private FoodParameterManager() { }
 	
@@ -25,24 +54,20 @@ public final class FoodParameterManager {
 			throw new IllegalArgumentException("item '" + itemFood.getUnlocalizedName() + "' already has nutritional information");
 		}
 		
-		foodParams.put(itemFood, param);
+		foodParams.put(ItemFoodKey.fromItemStack(itemFood), param);
 	}
 	
 	/*
 	 * 食料 itemFood に追加で栄養素情報が設定されているか
 	 */
 	public static boolean hasNutritionalInfo(ItemStack itemFood) {
-		ItemStack single = itemFood.copy();
-		single.stackSize = 1;
-		return foodParams.containsKey(single);
+		return foodParams.containsKey(ItemFoodKey.fromItemStack(itemFood));
 	}
 	
 	/*
 	 * 食料 itemFood に追加で設定された栄養素情報を取得
 	 */
 	public static FoodParameter getNutritionalValues(ItemStack itemFood) {
-		ItemStack single = itemFood.copy();
-		single.stackSize = 1;
-		return foodParams.get(single);
+		return foodParams.get(ItemFoodKey.fromItemStack(itemFood));
 	}
 }
